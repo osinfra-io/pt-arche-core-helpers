@@ -1,6 +1,6 @@
 # <img align="left" width="45" height="45" src="https://github.com/user-attachments/assets/7a8da619-5b2c-4ad0-a8be-e1eded7e7061"> OpenTofu Core - Helpers OpenTofu Module
 
-[![OpenTofu Tests](https://img.shields.io/github/actions/workflow/status/osinfra-io/opentofu-core-helpers/test.yml?style=for-the-badge&logo=opentofu&color=FEDA15&label=OpenTofu%20Tests)](https://github.com/osinfra-io/opentofu-core-helpers/actions/workflows/test.yml) [![Dependabot](https://img.shields.io/github/actions/workflow/status/osinfra-io/opentofu-core-helpers/dependabot.yml?style=for-the-badge&logo=github&color=2088FF&label=Dependabot)](https://github.com/osinfra-io/opentofu-core-helpers/actions/workflows/dependabot.yml)
+[![OpenTofu Tests](https://img.shields.io/github/actions/workflow/status/osinfra-io/pt-arche-core-helpers/test.yml?style=for-the-badge&logo=opentofu&color=FEDA15&label=OpenTofu%20Tests)](https://github.com/osinfra-io/pt-arche-core-helpers/actions/workflows/test.yml) [![Dependabot](https://img.shields.io/github/actions/workflow/status/osinfra-io/pt-arche-core-helpers/dependabot.yml?style=for-the-badge&logo=github&color=2088FF&label=Dependabot)](https://github.com/osinfra-io/pt-arche-core-helpers/actions/workflows/dependabot.yml)
 
 ## Repository Description
 
@@ -22,7 +22,7 @@ OpenTofu **example** module for helpers that provides core platform functionalit
 
 ```hcl
 module "helpers" {
-  source = "github.com/osinfra-io/opentofu-core-helpers//root"
+  source = "github.com/osinfra-io/pt-arche-core-helpers//root"
 
   cost_center         = "x001"
   data_classification = "public"
@@ -44,7 +44,7 @@ output "labels" {
 
 ```hcl
 module "helpers" {
-  source = "github.com/osinfra-io/opentofu-core-helpers//root"
+  source = "github.com/osinfra-io/pt-arche-core-helpers//root"
 
   cost_center         = "x001"
   data_classification = "public"
