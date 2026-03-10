@@ -1,4 +1,5 @@
-# OpenTofu Core Root Module Helpers
+# OpenTofu Core Helpers Module (osinfra.io)
+# https://github.com/osinfra-io/pt-arche-core-helpers
 
 locals {
   # The regex is used to parse the workspace name into its components, the components are used to set the region, zone, and environment variables.
