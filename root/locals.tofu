@@ -25,6 +25,8 @@ locals {
     zone                = local.zone != null ? "${local.region}-${local.zone}" : null
   }
 
+  logos_workspaces = var.logos_workspaces != null ? toset(var.logos_workspaces) : toset([])
+
   # Project naming components for downstream consumption
   project_naming = local.team_data != null ? {
     description = lower(local.team_data.display_name)

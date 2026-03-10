@@ -2,21 +2,26 @@
 # https://opentofu.org/docs/language/values/variables
 
 variable "cost_center" {
-  type = string
+  description = "The cost center the resources will be billed to"
+  type        = string
 }
 
 variable "data_classification" {
-  type = string
+  description = "The data classification of the resources"
+  type        = string
 }
 
 variable "repository" {
-  type = string
+  description = "The repository name"
+  type        = string
 }
 
 variable "team" {
-  type = string
+  description = "The team name"
+  type        = string
 }
 
 variable "workspace" {
-  type = string
+  description = "The workspace name used for testing environment detection"
+  type        = string
 }
