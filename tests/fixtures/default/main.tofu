@@ -1,6 +1,3 @@
-# Resources
-# https://opentofu.org/docs/language/resources
-
 # OpenTofu Core Helpers
 # https://github.com/osinfra-io/pt-arche-core-helpers
 
