@@ -13,9 +13,6 @@ OpenTofu **example** module for helpers that provides core platform functionalit
 - **Logos Integration**: Connects to logos remote state for team data, project naming, and folder IDs
 - **Multi-Workspace Support**: Aggregates team data across multiple logos workspaces
 
-> [!NOTE]
-> We do not recommend consuming this module like you might a [public module](https://search.opentofu.org). It is a baseline, something you can fork, potentially maintain, and modify to fit your organization's needs. Using public modules vs. writing your own has various [drivers and trade-offs](https://docs.osinfra.io/fundamentals/architecture-decision-records/adr-0003) that your organization should evaluate.
-
 ## 🔩 Usage
 
 ### Basic Usage (Workspace Parsing Only)
