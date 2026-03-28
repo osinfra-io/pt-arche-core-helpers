@@ -1,6 +1,3 @@
-# Data Sources
-# https://opentofu.org/docs/language/data-sources
-
 # Terraform Remote State - Logos
 # https://opentofu.org/docs/language/state/remote-state-data
 
