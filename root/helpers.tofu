@@ -15,7 +15,7 @@ locals {
   env = local.environment != null ? lookup(local.env_map, local.environment, "none") : null
 
   env_map = {
-    "non-production" = "nonprod"
+    "non-production" = "np"
     "production"     = "prod"
     "sandbox"        = "sb"
   }
@@ -53,30 +53,4 @@ locals {
   workspace = var.workspace != null ? var.workspace : terraform.workspace
 
   zone = local.parsed_workspace.zone
-}
-
-output "env" {
-  description = "The short name for the environment for example prod, nonprod, sb"
-  value       = local.env
-}
-
-output "environment" {
-  description = "The environment name for example production, non-production, sandbox"
-  value       = local.environment
-}
-
-output "region" {
-  description = "The region where resources will be deployed"
-  value       = local.region
-}
-
-output "zone" {
-  description = "The zone where resources will be deployed"
-  value       = local.zone
-}
-
-variable "workspace" {
-  description = "This is used for tests to set the workspace name. Do not set this variable in any other context"
-  type        = string
-  default     = null
 }

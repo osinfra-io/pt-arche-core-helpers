@@ -15,7 +15,7 @@ locals {
   env = local.environment != null ? lookup(local.env_map, local.environment, "none") : null
 
   env_map = {
-    "non-production" = "nonprod"
+    "non-production" = "np"
     "production"     = "prod"
     "sandbox"        = "sb"
   }
@@ -43,41 +43,14 @@ locals {
 
   region = local.parsed_workspace.region
 
-  # Google Cloud region regex - supports only us-east1 and us-east4
-  # Supported regions: us-east1, us-east4
-  # Note: Platform currently only supports these two regions
-  region_regex = "^(us-east1|us-east4)"
+  # Google Cloud region regex - supports us-east1, us-east4, and europe-west1
+  # Supported regions: us-east1, us-east4, europe-west1
+  region_regex = "^(us-east1|us-east4|europe-west1)"
 
   # Google Cloud zone regex - supports all available zones (a, b, c, d, e, f)
-  zone_regex = "^(us-east1|us-east4)-([abcdef])"
+  zone_regex = "^(us-east1|us-east4|europe-west1)-([abcdef])"
 
   workspace = var.workspace != null ? var.workspace : terraform.workspace
 
   zone = local.parsed_workspace.zone
-}
-
-output "env" {
-  description = "The short name for the environment for example prod, nonprod, sb"
-  value       = local.env
-}
-
-output "environment" {
-  description = "The environment name for example production, non-production, sandbox"
-  value       = local.environment
-}
-
-output "region" {
-  description = "The region where resources will be deployed"
-  value       = local.region
-}
-
-output "zone" {
-  description = "The zone where resources will be deployed"
-  value       = local.zone
-}
-
-variable "workspace" {
-  description = "This is used for tests to set the workspace name. Do not set this variable in any other context"
-  type        = string
-  default     = null
 }

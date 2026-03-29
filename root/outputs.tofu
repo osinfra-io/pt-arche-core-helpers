@@ -11,6 +11,16 @@ output "data_classification" {
   value       = var.data_classification
 }
 
+output "env" {
+  description = "The short name for the environment for example prod, nonprod, sb"
+  value       = local.env
+}
+
+output "environment" {
+  description = "The environment name for example production, non-production, sandbox"
+  value       = local.environment
+}
+
 output "environment_folder_id" {
   description = "The folder ID for the current team and environment from logos state"
   value       = local.environment_folder_id
@@ -24,6 +34,11 @@ output "labels" {
 output "project_naming" {
   description = "The project naming configuration from logos state"
   value       = local.project_naming
+}
+
+output "region" {
+  description = "The region where resources will be deployed"
+  value       = local.region
 }
 
 output "repository" {
@@ -49,4 +64,9 @@ output "team_prefix" {
 output "teams" {
   description = "All teams data from logos workspaces"
   value       = local.all_teams
+}
+
+output "zone" {
+  description = "The zone where resources will be deployed"
+  value       = local.zone
 }
