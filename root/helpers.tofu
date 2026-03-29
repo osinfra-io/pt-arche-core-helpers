@@ -15,7 +15,7 @@ locals {
   env = local.environment != null ? lookup(local.env_map, local.environment, "none") : null
 
   env_map = {
-    "non-production" = "np"
+    "non-production" = "nonprod"
     "production"     = "prod"
     "sandbox"        = "sb"
   }
