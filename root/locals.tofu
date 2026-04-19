@@ -29,7 +29,6 @@ locals {
 
   # Project naming components for downstream consumption
   project_naming = local.team_data != null ? {
-    description = lower(local.team_data.display_name)
     prefix      = local.team_prefix
     team_key    = local.team_key
     team_prefix = local.team_prefix

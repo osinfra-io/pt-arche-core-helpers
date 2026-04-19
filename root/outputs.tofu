@@ -22,7 +22,7 @@ output "labels" {
 }
 
 output "project_naming" {
-  description = "The project naming configuration from logos state"
+  description = "The project naming configuration from logos state. Contains prefix, team_key, and team_prefix."
   value       = local.project_naming
 }
 
