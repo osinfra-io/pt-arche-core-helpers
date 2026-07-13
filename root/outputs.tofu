@@ -36,10 +36,7 @@ output "team" {
   value       = var.team
 }
 
-output "team_key" {
-  description = "The team key (same as team for consistency)"
-  value       = local.team_key
-}
+
 
 output "team_prefix" {
   description = "Team type prefix extracted from team key (e.g., 'pt', 'st', 'ct', 'et')"

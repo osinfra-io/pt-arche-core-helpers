@@ -31,11 +31,6 @@ output "region" {
   value       = module.core_helpers_root.region
 }
 
-output "team_key" {
-  description = "The team key identifier"
-  value       = module.core_helpers_root.team_key
-}
-
 output "zone" {
   description = "The zone where resources will be deployed"
   value       = module.core_helpers_root.zone
