@@ -37,13 +37,6 @@ variable "repository" {
   }
 }
 
-variable "state_kms_encryption_key" {
-  description = "The KMS encryption key for accessing encrypted GCS state files. Required when logos_workspaces is provided and state files are encrypted."
-  type        = string
-  default     = null
-  sensitive   = true
-}
-
 variable "team" {
   description = "The team name (should contain only lowercase alphanumeric characters and hyphens)"
   type        = string

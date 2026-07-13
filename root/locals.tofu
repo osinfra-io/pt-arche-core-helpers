@@ -30,7 +30,7 @@ locals {
   # Project naming components for downstream consumption
   project_naming = local.team_data != null ? {
     prefix      = local.team_prefix
-    team_key    = local.team_key
+    team_key    = var.team
     team_prefix = local.team_prefix
   } : null
 
@@ -45,9 +45,6 @@ locals {
     null
   ) : null
 
-  # Extract team key from team variable
-  team_key = var.team
-
   # Team prefix extraction (pt, st, ct, et)
-  team_prefix = local.team_key != null ? split("-", local.team_key)[0] : null
+  team_prefix = var.team != null ? split("-", var.team)[0] : null
 }
