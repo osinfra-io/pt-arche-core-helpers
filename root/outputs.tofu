@@ -1,16 +1,6 @@
 # Output Values
 # https://opentofu.org/docs/language/values/outputs
 
-output "cost_center" {
-  description = "The cost center the resources will be billed to"
-  value       = var.cost_center
-}
-
-output "data_classification" {
-  description = "The data classification of the resources"
-  value       = var.data_classification
-}
-
 output "environment_folder_id" {
   description = "The folder ID for the current team and environment from logos state"
   value       = local.environment_folder_id
@@ -34,13 +24,6 @@ output "repository" {
 output "team" {
   description = "The team name"
   value       = var.team
-}
-
-
-
-output "team_prefix" {
-  description = "Team type prefix extracted from team key (e.g., 'pt', 'st', 'ct', 'et')"
-  value       = local.team_prefix
 }
 
 output "teams" {
