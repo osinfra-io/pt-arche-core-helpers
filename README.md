@@ -4,22 +4,26 @@
 
 ## Repository Description
 
-OpenTofu **example** module for helpers that provides core platform functionality including workspace parsing, resource labeling, and logos integration for team and project management.
+Reusable OpenTofu child module for helpers that provides core platform functionality including workspace parsing, resource labeling, and logos integration for team and project management.
 
-**Core Features:**
-
-- **Workspace Parsing**: Extracts environment, region, and zone from structured workspace names
-- **Resource Labels**: Generates consistent labels for resource tagging and organization
-- **Logos Integration**: Connects to logos remote state for team data, project naming, and folder IDs
-- **Multi-Workspace Support**: Aggregates team data across multiple logos workspaces
+It parses platform workspace names, generates standard resource labels, and optionally reads Logos remote state for team, project-naming, and environment-folder data.
 
 ## 🔩 Usage
 
-### Basic Usage (Workspace Parsing Only)
+### Module interfaces
+
+| Source path | Purpose | Interface |
+| --- | --- | --- |
+| `//child` | Workspace parsing for Arche child modules. | Optional test-only [`workspace`](shared/helpers.tofu) input; outputs `env`, `environment`, `region`, and `zone` are defined in the same file. |
+| `//root` | Workspace parsing, standard labels, and optional Logos state aggregation for root modules. | [`variables.tofu`](root/variables.tofu) · [`outputs.tofu`](root/outputs.tofu) |
+
+Both entry points recognize the platform `sandbox`, `non-production`, and `production` workspace suffixes and only the `us-east1` and `us-east4` regions. The `//root` entry point requires repository, team, cost-center, and data-classification metadata; Logos-derived outputs are populated when `logos_workspaces` is supplied. Remote state access therefore requires the consumer to have access to the configured Logos state backends.
+
+### Root module example
 
 ```hcl
 module "helpers" {
-  source = "github.com/osinfra-io/pt-arche-core-helpers//root"
+  source = "github.com/osinfra-io/pt-arche-core-helpers//root?ref=<commit_sha>" # vX.Y.Z
 
   cost_center         = "x001"
   data_classification = "public"
@@ -34,35 +38,6 @@ output "environment" {
 
 output "labels" {
   value = module.helpers.labels
-}
-```
-
-### With Logos Integration
-
-```hcl
-module "helpers" {
-  source = "github.com/osinfra-io/pt-arche-core-helpers//root"
-
-  cost_center         = "x001"
-  data_classification = "public"
-  repository          = "my-repository"
-  team                = "my-team"
-
-  # Enable logos integration
-  logos_workspaces = ["my-team-main-production", "logos-main-production"]
-}
-
-# Access logos-integrated outputs
-output "project_naming" {
-  value = module.helpers.project_naming
-}
-
-output "environment_folder_id" {
-  value = module.helpers.environment_folder_id
-}
-
-output "teams" {
-  value = module.helpers.teams
 }
 ```
 
