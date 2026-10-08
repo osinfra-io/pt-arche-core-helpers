@@ -31,6 +31,50 @@ run "broken-workspace" {
   }
 }
 
+run "malformed-region-boundary" {
+  command = apply
+
+  module {
+    source = "./tests/fixtures/default"
+  }
+
+  variables {
+    workspace = "us-east1bogus-production"
+  }
+
+  assert {
+    condition     = output.region == null
+    error_message = "A region must end at a hyphen or the end of the workspace name"
+  }
+
+  assert {
+    condition     = output.zone == null
+    error_message = "A malformed region must not produce a zone"
+  }
+}
+
+run "malformed-zone-boundary" {
+  command = apply
+
+  module {
+    source = "./tests/fixtures/default"
+  }
+
+  variables {
+    workspace = "us-east1-bogus-production"
+  }
+
+  assert {
+    condition     = output.region == "us-east1"
+    error_message = "The valid region must still be parsed"
+  }
+
+  assert {
+    condition     = output.zone == null
+    error_message = "A zone must end at a hyphen or the end of the workspace name"
+  }
+}
+
 run "default" {
   command = apply
 

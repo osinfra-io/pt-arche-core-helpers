@@ -10,36 +10,7 @@ It parses platform workspace names, generates standard resource labels, and opti
 
 ## 🔩 Usage
 
-### Module interfaces
-
-| Source path | Purpose | Interface |
-| --- | --- | --- |
-| `//child` | Workspace parsing for Arche child modules. | Optional test-only [`workspace`](shared/helpers.tofu) input; outputs `env`, `environment`, `region`, and `zone` are defined in the same file. |
-| `//root` | Workspace parsing, standard labels, and optional Logos state aggregation for root modules. | [`variables.tofu`](root/variables.tofu) · [`outputs.tofu`](root/outputs.tofu) |
-
-Both entry points recognize the platform `sandbox`, `non-production`, and `production` workspace suffixes and only the `us-east1` and `us-east4` regions. The `//root` entry point requires repository, team, cost-center, and data-classification metadata; Logos-derived outputs are populated when `logos_workspaces` is supplied. Remote state access therefore requires the consumer to have access to the configured Logos state backends.
-
-### Root module example
-
-```hcl
-module "helpers" {
-  source = "github.com/osinfra-io/pt-arche-core-helpers//root?ref=<commit_sha>" # vX.Y.Z
-
-  cost_center         = "x001"
-  data_classification = "public"
-  repository          = "my-repository"
-  team                = "my-team"
-}
-
-# Access workspace parsing outputs
-output "environment" {
-  value = module.helpers.environment
-}
-
-output "labels" {
-  value = module.helpers.labels
-}
-```
+Workspace parsing supports `sandbox`, `non-production`, and `production` suffixes and the `us-east1` and `us-east4` regions. Supplying `logos_workspaces` requires access to the configured Logos state backends.
 
 > [!TIP]
 > You can check the [tests/fixtures](tests/fixtures) directory for example configurations. These fixtures set up the system for testing by providing all the necessary initial code, thus creating good examples on which to base your configurations.
