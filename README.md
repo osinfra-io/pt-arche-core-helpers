@@ -10,7 +10,7 @@ It parses platform workspace names, generates standard resource labels, and opti
 
 ## 🔩 Usage
 
-Both entry points recognize the platform `sandbox`, `non-production`, and `production` workspace suffixes and only the `us-east1` and `us-east4` regions. The `//root` entry point requires repository, team, cost-center, and data-classification metadata; Logos-derived outputs are populated when `logos_workspaces` is supplied. Remote state access therefore requires the consumer to have access to the configured Logos state backends.
+Workspace parsing supports `sandbox`, `non-production`, and `production` suffixes and the `us-east1` and `us-east4` regions. Supplying `logos_workspaces` requires access to the configured Logos state backends.
 
 > [!TIP]
 > You can check the [tests/fixtures](tests/fixtures) directory for example configurations. These fixtures set up the system for testing by providing all the necessary initial code, thus creating good examples on which to base your configurations.
