@@ -46,10 +46,10 @@ locals {
   # Google Cloud region regex - supports only us-east1 and us-east4
   # Supported regions: us-east1, us-east4
   # Note: Platform currently only supports these two regions
-  region_regex = "^(us-east1|us-east4)"
+  region_regex = "^(us-east1|us-east4)(-|$)"
 
   # Google Cloud zone regex - supports all available zones (a, b, c, d, e, f)
-  zone_regex = "^(us-east1|us-east4)-([abcdef])"
+  zone_regex = "^(us-east1|us-east4)-([abcdef])(-|$)"
 
   workspace = var.workspace != null ? var.workspace : terraform.workspace
 
