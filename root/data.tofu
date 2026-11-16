@@ -13,3 +13,16 @@ data "terraform_remote_state" "logos" {
 
   workspace = each.key
 }
+
+data "terraform_remote_state" "logos_environment" {
+  for_each = local.logos_environment_workspaces
+
+  backend = "gcs"
+
+  config = {
+    bucket = "pt-logos-state-${local.env}"
+    prefix = "pt-logos"
+  }
+
+  workspace = each.key
+}

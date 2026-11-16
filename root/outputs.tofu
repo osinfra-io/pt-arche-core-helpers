@@ -2,8 +2,13 @@
 # https://opentofu.org/docs/language/values/outputs
 
 output "environment_folder_id" {
-  description = "The folder ID for the current team and environment from logos state"
+  description = "The folder ID for the current team and environment from Logos state"
   value       = local.environment_folder_id
+}
+
+output "environment_root_folder_id" {
+  description = "The folder ID for the environment root from Logos state"
+  value       = local.environment_root_folder_id
 }
 
 output "labels" {
