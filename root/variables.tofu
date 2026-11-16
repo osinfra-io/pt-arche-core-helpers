@@ -22,9 +22,14 @@ variable "data_classification" {
 }
 
 variable "logos_workspaces" {
-  description = "List of logos workspace names to read remote state from for team data aggregation. When provided, enables logos integration features including team data lookup, project naming, and environment folder IDs. Example: ['corpus-main-production', 'logos-main-production']"
+  description = "List of production Logos workspace names used for shared team metadata and environment-specific data lookup. Workspace names for the current environment are derived from these names. When provided, enables team data lookup, project naming, and environment folder IDs. Example: ['pt-corpus-main-production', 'pt-logos-main-production']"
   type        = list(string)
   default     = null
+
+  validation {
+    condition     = var.logos_workspaces == null || alltrue([for workspace_name in var.logos_workspaces : endswith(workspace_name, "-main-production")])
+    error_message = "Logos workspace names must end with -main-production so environment workspace names can be derived."
+  }
 }
 
 variable "repository" {
